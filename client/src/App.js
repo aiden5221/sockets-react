@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import ChatBox from './components/Chatbox/Chatbox.component';
+import Groups from './components/Groups/Groups.component';
 import { sendGroupNum, sendMessage } from './utils/socket.utils';
 const App = ({ socket }) => {
   // const [message, setMessage] = useState('');
@@ -22,7 +23,8 @@ const App = ({ socket }) => {
 
   return (
     <div>
-        <ChatBox />
+        {/* <ChatBox /> */}
+        <Groups />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { Button, Container, InputGroup, Input, InputRightElement } from "@chakra-ui/react";
+import { Button, Container, InputGroup, Input, InputRightElement, VStack, StackDivider } from "@chakra-ui/react";
 import { FiSend } from 'react-icons/fi'
 import Chat from "../Chat/Chat.component";
 const ChatBox = () => {
@@ -15,10 +15,22 @@ const ChatBox = () => {
             borderRadius='1rem'
             marginTop='1vh'
             position='relative'
-            
         >
-            <Chat/>
-
+            <VStack
+                divider={<StackDivider borderColor='gray.200'/>}
+                spacing={4}
+                align='stretch'
+                maxHeight='60vh'
+                overflowY='auto'
+                marginBottom='20%'
+                marginTop='5%'
+                position='static'
+            >
+                <Chat/>
+                <Chat/>
+                <Chat/>
+                <Chat/>
+            </VStack>
             <InputGroup
                 borderColor='red.300'
                 position='absolute'

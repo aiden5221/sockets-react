@@ -1,35 +1,23 @@
-import { Wrap, WrapItem, Text, Avatar, Flex } from "@chakra-ui/react";
+import { Center, Text, Avatar, Flex, Box } from "@chakra-ui/react";
 
 const Chat = (text, avatar) => {
   
-    return(
-            <Flex
-                
-            >
-                <Wrap 
-                    spacing='30px'
-                    justifyContent='flex-end'
-                >
-                    <WrapItem>
-                        <Text>
-                           
-                           dawd
-                        </Text>
-                    </WrapItem>
-                    <WrapItem
-                        float='right'
-                        position='relative'
-                    >
-                        <Avatar 
-                            size='xs' 
-                            name='Dan Abrahmov' 
-                            marginTop='10%'
-                            right='0'
-                            float='right'
-                            src='https://bit.ly/dan-abramov' />
-                    </WrapItem>
-                </Wrap>
-
+    return( 
+            <Flex width='100%' direction='row' justifyContent='flex-end'>
+                <Center >
+                    <Text>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error iure voluptatum perferendis saepe quasi consequuntur. Eum minima voluptatum corrupti, aspernatur vel assumenda, possimus eos ex sed nobis ad natus debitis.
+                    </Text>
+                </Center>
+               <Box
+                marginLeft='2%'
+               >
+                    <Avatar 
+                        size='xs' 
+                        name='Dan Abrahmov' 
+                        marginTop='10%'
+                        src='https://bit.ly/dan-abramov' />
+                </Box>
             </Flex>
     )
 }
