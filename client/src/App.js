@@ -1,3 +1,4 @@
+import { Box } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import ChatBox from './components/Chatbox/Chatbox.component';
 import Groups from './components/Groups/Groups.component';
@@ -22,10 +23,20 @@ const App = ({ socket }) => {
   // }, [socket]);
 
   return (
-    <div>
-        {/* <ChatBox /> */}
-        <Groups />
-    </div>
+    <Box
+      display='flex'
+      marginTop='2vh'
+      width='70%'
+      margin='auto'
+      maxHeight='60vh'
+      minHeight='60vh'
+      minH='md'
+      
+    >
+      <Groups />
+      <ChatBox />
+        
+    </Box>
   );
 }
 

@@ -7,25 +7,33 @@ const ChatBox = () => {
 
     return(
         <Container 
-            maxW='md'
+            
             centerContent
-            minH='md'
             border='2px'
             borderColor='teal.400'
             borderRadius='1rem'
-            marginTop='1vh'
             position='relative'
+            marginLeft='1vw'
+            
         >
             <VStack
                 divider={<StackDivider borderColor='gray.200'/>}
                 spacing={4}
                 align='stretch'
-                maxHeight='60vh'
                 overflowY='auto'
-                marginBottom='20%'
-                marginTop='5%'
+                marginBottom='15%'
+                marginTop='2%'
                 position='static'
             >
+                <Chat/>
+                <Chat/>
+                <Chat/>
+                <Chat/>
+                <Chat/>
+                <Chat/>
+                <Chat/>
+                <Chat/>
+                <Chat/>
                 <Chat/>
                 <Chat/>
                 <Chat/>
