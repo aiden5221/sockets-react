@@ -1,12 +1,11 @@
 import { Center, Text, Avatar, Flex, Box } from "@chakra-ui/react";
 
-const Chat = (text, avatar) => {
-  
+const Chat = ({ msg, avatar }) => {
     return( 
-            <Flex width='100%' direction='row' justifyContent='flex-end'>
+            <Flex width='100%' minWidth='100%' direction='row' justifyContent='flex-end'>
                 <Center >
                     <Text>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error iure voluptatum perferendis saepe quasi consequuntur. Eum minima voluptatum corrupti, aspernatur vel assumenda, possimus eos ex sed nobis ad natus debitis.
+                        {msg}
                     </Text>
                 </Center>
                <Box

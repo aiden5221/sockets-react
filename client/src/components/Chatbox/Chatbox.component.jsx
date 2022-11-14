@@ -1,13 +1,33 @@
 import { Button, Container, InputGroup, Input, InputRightElement, VStack, StackDivider } from "@chakra-ui/react";
 import { FiSend } from 'react-icons/fi'
+import { useState, useEffect } from "react";
+import { sendGroupNum, sendMessage } from "../../utils/socket.utils";
 import Chat from "../Chat/Chat.component";
-const ChatBox = () => {
 
+const ChatBox = ({socket}) => {
+    const [message, setMessage] = useState('');
+    const [receivedMessages, setReceivedMessages] = useState([]);
+    
+    const handleMessageChange = (e) => {
+        setMessage(e.target.value)
+    }
 
+    useEffect(() =>{
+        sendGroupNum(1, socket);
+
+        socket.on('receive_message', (data) => {
+            // setMessage(data.message, 1, socket)
+            setReceivedMessages(currentMessages => [...currentMessages, data.message]);
+
+        })
+    }, []);
+
+    const messageHandler = () => {
+        sendMessage(message, 1, socket)
+    }
 
     return(
         <Container 
-            
             centerContent
             border='2px'
             borderColor='teal.400'
@@ -24,20 +44,17 @@ const ChatBox = () => {
                 marginBottom='15%'
                 marginTop='2%'
                 position='static'
+                width='100%'
             >
-                <Chat/>
-                <Chat/>
-                <Chat/>
-                <Chat/>
-                <Chat/>
-                <Chat/>
-                <Chat/>
-                <Chat/>
-                <Chat/>
-                <Chat/>
-                <Chat/>
-                <Chat/>
-                <Chat/>
+                {
+                    receivedMessages.length !== 0 ? 
+                    receivedMessages.map((receivedMessage) => {
+                        console.log(receivedMessage)
+                        return <Chat width='100%' msg={receivedMessage}/>
+                    })
+                    : null
+                }
+
             </VStack>
             <InputGroup
                 borderColor='red.300'
@@ -50,11 +67,15 @@ const ChatBox = () => {
                     placeholder='Text'
                     borderColor='red.300'
                     variant='filled'
+                    onChange={handleMessageChange}
                 />
                 <InputRightElement
                     width='4.5rem'
                 >
-                    <Button marginLeft='40%' size='sm'>
+                    <Button 
+                        marginLeft='40%' 
+                        size='sm'
+                        onClick={messageHandler} >
                         <FiSend />
                     </Button>
                 </InputRightElement>

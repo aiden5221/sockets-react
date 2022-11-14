@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import ChatBox from './components/Chatbox/Chatbox.component';
 import Groups from './components/Groups/Groups.component';
 import { sendGroupNum, sendMessage } from './utils/socket.utils';
+
 const App = ({ socket }) => {
   // const [message, setMessage] = useState('');
   // const [messageReceived, setMessageReceived] = useState('');
@@ -34,7 +35,7 @@ const App = ({ socket }) => {
       
     >
       <Groups />
-      <ChatBox />
+      <ChatBox socket={socket}/>
         
     </Box>
   );
