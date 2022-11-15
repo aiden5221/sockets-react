@@ -2,6 +2,7 @@ import { Box } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import ChatBox from './components/Chatbox/Chatbox.component';
 import Groups from './components/Groups/Groups.component';
+import Signin from './components/Signin/Signin.component';
 import { sendGroupNum, sendMessage } from './utils/socket.utils';
 
 const App = ({ socket }) => {
@@ -24,20 +25,21 @@ const App = ({ socket }) => {
   // }, [socket]);
 
   return (
-    <Box
-      display='flex'
-      marginTop='2vh'
-      width='70%'
-      margin='auto'
-      maxHeight='60vh'
-      minHeight='60vh'
-      minH='md'
+    // <Box
+    //   display='flex'
+    //   marginTop='2vh'
+    //   width='70%'
+    //   margin='auto'
+    //   maxHeight='60vh'
+    //   minHeight='60vh'
+    //   minH='md'
       
-    >
-      <Groups />
-      <ChatBox socket={socket}/>
+    // >
+    //   <Groups />
+    //   <ChatBox socket={socket}/>
         
-    </Box>
+    // </Box>
+    <Signin/>
   );
 }
 

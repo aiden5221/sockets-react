@@ -6,8 +6,9 @@ import Chat from "../Chat/Chat.component";
 
 const ChatBox = ({socket}) => {
     const [message, setMessage] = useState('');
-    const [receivedMessages, setReceivedMessages] = useState([]);
-    
+    const [messages, setMessages] = useState([]);
+
+
     const handleMessageChange = (e) => {
         setMessage(e.target.value)
     }
@@ -17,13 +18,15 @@ const ChatBox = ({socket}) => {
 
         socket.on('receive_message', (data) => {
             // setMessage(data.message, 1, socket)
-            setReceivedMessages(currentMessages => [...currentMessages, data.message]);
+            setMessages(currentMessages => [...currentMessages, { msg: data.message, received: true }]);
 
         })
     }, []);
 
     const messageHandler = () => {
+        setMessages(currentMessages => [...currentMessages, { msg: message, received: false }])
         sendMessage(message, 1, socket)
+        
     }
 
     return(
@@ -47,10 +50,11 @@ const ChatBox = ({socket}) => {
                 width='100%'
             >
                 {
-                    receivedMessages.length !== 0 ? 
-                    receivedMessages.map((receivedMessage) => {
-                        console.log(receivedMessage)
-                        return <Chat width='100%' msg={receivedMessage}/>
+                    
+                    messages.length !== 0 ? 
+                    messages.map((receivedMessage) => {
+                        console.log(messages)
+                        return <Chat width='100%' msg={receivedMessage.msg} sent={receivedMessage.received}/>
                     })
                     : null
                 }
